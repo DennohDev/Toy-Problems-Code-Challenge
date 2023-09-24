@@ -17,7 +17,7 @@ node -v
 ```sh
 node index.js
 ```
-![Grade Generator Image](<Screenshot 2023-09-24 222201.png>)
+![Grade Generator Image](<Screenshots/Screenshot 2023-09-24 222201.png>)
 
 ### 2. Speed Detector
 - This program that takes the speed of a car as input e.g 80. If the speed is less than 70, it prints “Ok”. Otherwise, for every 5 km/s above the speed limit (70), it gives the driver one demerit point and prints the total number of demerit points.
@@ -26,7 +26,7 @@ node index.js
 ```sh
 node index.js
 ```
-![Speed Detector Image](<Screenshot 2023-09-24 223455.png>)
+![Speed Detector Image](<Screenshots/Screenshot 2023-09-24 223455.png>)
 
 ### 3. Net Salary
 - The program calculates an individual’s Net Salary by getting the inputs of basic salary and benefits. It calculates the payee (i.e. Tax), NHIF Deductions, NSSF Deductions, gross salary, and net salary. 
@@ -34,4 +34,4 @@ node index.js
 ```sh
 node index.js
 ```
-![Net Salary Calculator image](<Screenshot 2023-09-24 224252.png>)
+![Net Salary Calculator image](<Screenshots/Screenshot 2023-09-24 224252.png>)
