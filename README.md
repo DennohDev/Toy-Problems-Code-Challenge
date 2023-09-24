@@ -18,6 +18,7 @@ node -v
 node index.js
 ```
 ![Grade Generator Image](./Screenshots/<Screenshot 2023-09-24 222201.png>)
+![Alt text](<Screenshots/Screenshot 2023-09-24 222201.png>)
 
 ### 2. Speed Detector
 - This program that takes the speed of a car as input e.g 80. If the speed is less than 70, it prints “Ok”. Otherwise, for every 5 km/s above the speed limit (70), it gives the driver one demerit point and prints the total number of demerit points.
