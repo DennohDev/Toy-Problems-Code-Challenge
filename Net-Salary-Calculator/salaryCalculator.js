@@ -86,7 +86,6 @@ function calculateNetSalary(grossSalary) {
     // personal relief eases tax payment
     const personalRelief = 2400
     const payeDeducted = Math.floor(payeDeduction(grossSalary)) - personalRelief
-    console.log(payeDeducted)
     const nhifDeducted = nhifDeduction(grossSalary)
     const nssfDeducted = nssfDeductionTier1()
     const housingLevy = Math.floor(housingLevyDeduction(grossSalary))

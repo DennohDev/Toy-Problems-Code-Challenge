@@ -6,7 +6,6 @@ const readline = require("readline");
 // Import the grading.js file that contains the grading functon
 const grading = require("./grading");
 
-// Access the grading function in the grading file
 const getGrade = grading.grading
 
 const rl = readline.createInterface({
