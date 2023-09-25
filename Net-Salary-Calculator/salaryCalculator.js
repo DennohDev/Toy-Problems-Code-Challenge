@@ -65,24 +65,21 @@ function nhifDeduction(grossSalary) {
 // Tier 2 payment wher 6% is deducted from the comapany and the employee which is > 6000 and < 18000 of the pensionable pay
 // I decided to settle for the tier 1 payment of 6% where the maximum amount defaults to ksh 6000  of the pensionable pay
 
-function nssfDeduction(grossSalary) {
-    const maxGrossSalary = 6000
-    const nssfDeduction = grossSalary * 0.6
-    if (grossSalary > maxGrossSalary) {
-        return Math.floor(maxGrossSalary * 0.6)
-    } else {
-        return Math.floor(nssfDeduction)
-    }
+function nssfDeductionTier1(grossSalary) {
+    const pensionablePay = 6000
+    const nssfDeduction = pensionablePay * 0.06
+    return nssfDeduction
 }
+
 
 // Deducts the taxes using the functions stated above
 function calculateNetSalary(grossSalary) {
-    const netSalary = grossSalary - payeDeduction(grossSalary) - nhifDeduction(grossSalary) - nssfDeduction(grossSalary);
+    const netSalary = grossSalary - payeDeduction(grossSalary) - nhifDeduction(grossSalary) - nssfDeductionTier1(grossSalary);
     console.log(`
     Gross Salary: ${grossSalary}\n
     PAYE: ${payeDeduction(grossSalary)}\n
     NHIF: ${nhifDeduction(grossSalary)}\n
-    NSSF(Tier 1): ${nssfDeduction(grossSalary)}\n
+    NSSF(Tier 1): ${nssfDeductionTier1(grossSalary)}\n
     ------------------------------------\n
     Net Salary: ${netSalary}\n
     `)
