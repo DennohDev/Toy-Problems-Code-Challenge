@@ -3,17 +3,29 @@
 
 // Functions to calculate the tax deductions based on the net salary
 // PAYE Function
-
+// function payeDeduction(grossSalary) {
+//     if (grossSalary <= 24000) {
+//         return Math.floor(grossSalary * 0.1)
+//     } else if (grossSalary >= 24001 && grossSalary <= 32333) {
+//         return Math.floor(grossSalary * 0.25)
+//     } else if (grossSalary >= 32334 && grossSalary <= 500000) {
+//         return Math.floor(grossSalary * 0.3)
+//     } else if (grossSalary >= 500001 && grossSalary <= 800000) {
+//         return Math.floor(grossSalary * 0.325)
+//     } else {
+//         return Math.floor(grossSalary * 0.35)
+//     }
+// }
 
 function payeDeduction(grossSalary) {
     if (grossSalary <= 24000){
-        return Math.floor(24000 * 0.1)
+        return (24000 * 0.1)
     } else if ((grossSalary-24000)<=8333){
-        return Math.floor(((grossSalary - 24000)*0.25) + 2400)
+        return ((grossSalary - 24000)*0.25) + 2400
     } else if ((grossSalary-32333)<=467667){
-        return Math.floor(((grossSalary-32333)*0.3) + (8333*0.25) + 2400)
+        return ((grossSalary-32333)*0.3) + (8333*0.25) + 2400
     } else if((grossSalary-500000)<=300000){
-        return Math.floor(((grossSalary-500000)*0.325) + (467667*0.3) +(8333*0.25) + 2400)
+        return ((grossSalary-500000)*0.325) + (467667*0.3) +(8333*0.25) + 2400
     } else{
         return (grossSalary*0.35)
     }
@@ -69,7 +81,7 @@ function nhifDeduction(grossSalary) {
 // Tier 2 payment wher 6% is deducted from the comapany and the employee which is > 6000 and < 18000 of the pensionable pay
 // I decided to settle for the tier 1 payment of 6% where the maximum amount defaults to ksh 6000  of the pensionable pay
 
-function nssfDeductionTier1(grossSalary) {
+function nssfDeductionTier1() {
     const pensionablePay = 6000
     const nssfDeduction = pensionablePay * 0.06
     return nssfDeduction
@@ -81,20 +93,25 @@ function housingLevyDeduction(grossSalary){
 }
 
 
-// personal relief will easen the tax paying
-const personalRelief = 2400
-
-
 // Deducts the taxes using the functions stated above
 function calculateNetSalary(grossSalary) {
-    const netSalary = grossSalary - payeDeduction(grossSalary) - nhifDeduction(grossSalary) - nssfDeductionTier1(grossSalary) - housingLevyDeduction(grossSalary) + personalRelief;
+    // personal relief eases tax payment
+    const personalRelief = 2400
+    const payeDeducted = Math.floor(payeDeduction(grossSalary)) - personalRelief
+    console.log(payeDeducted)
+    const nhifDeducted = nhifDeduction(grossSalary)
+    const nssfDeducted = nssfDeductionTier1()
+    const housingLevy = Math.floor(housingLevyDeduction(grossSalary))
+    
+
+    const netSalary = grossSalary - payeDeducted - nhifDeducted - nssfDeducted - housingLevy 
+
     console.log(`
     Gross Salary: ${grossSalary}\n
-    PAYE: ${payeDeduction(grossSalary)}\n
-    NHIF: ${nhifDeduction(grossSalary)}\n
-    NSSF(Tier 1): ${nssfDeductionTier1(grossSalary)}\n
-    Housing Levy: ${housingLevyDeduction(grossSalary)}\n
-    Personal relief: ${personalRelief}
+    PAYE: ${payeDeducted}\n
+    NHIF: ${nhifDeducted}\n
+    NSSF(Tier 1): ${nssfDeducted}\n
+    Housing Levy: ${housingLevy}\n
     ------------------------------------\n
     Net Salary: ${netSalary}\n
     `)
@@ -102,4 +119,4 @@ function calculateNetSalary(grossSalary) {
 
 module.exports={calculateNetSalary}
 
-console.log(payeDeduction(48920))
+console.log(Math.floor(calculateNetSalary(198920)))
