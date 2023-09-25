@@ -3,19 +3,23 @@
 
 // Functions to calculate the tax deductions based on the net salary
 // PAYE Function
+
+
 function payeDeduction(grossSalary) {
-    if (grossSalary <= 24000) {
-        return Math.floor(grossSalary * 0.1)
-    } else if (grossSalary >= 24001 && grossSalary <= 32333) {
-        return Math.floor(grossSalary * 0.25)
-    } else if (grossSalary >= 32334 && grossSalary <= 500000) {
-        return Math.floor(grossSalary * 0.3)
-    } else if (grossSalary >= 500001 && grossSalary <= 800000) {
-        return Math.floor(grossSalary * 0.325)
-    } else {
-        return Math.floor(grossSalary * 0.35)
+    if (grossSalary <= 24000){
+        return Math.floor(24000 * 0.1)
+    } else if ((grossSalary-24000)<=8333){
+        return Math.floor(((grossSalary - 24000)*0.25) + 2400)
+    } else if ((grossSalary-32333)<=467667){
+        return Math.floor(((grossSalary-32333)*0.3) + (8333*0.25) + 2400)
+    } else if((grossSalary-500000)<=300000){
+        return Math.floor(((grossSalary-500000)*0.325) + (467667*0.3) +(8333*0.25) + 2400)
+    } else{
+        return (grossSalary*0.35)
     }
 }
+
+
 
 // NHIF Function
 
@@ -71,18 +75,31 @@ function nssfDeductionTier1(grossSalary) {
     return nssfDeduction
 }
 
+// Housing levy deduction
+function housingLevyDeduction(grossSalary){
+    return (grossSalary * 0.015)
+}
+
+
+// personal relief will easen the tax paying
+const personalRelief = 2400
+
 
 // Deducts the taxes using the functions stated above
 function calculateNetSalary(grossSalary) {
-    const netSalary = grossSalary - payeDeduction(grossSalary) - nhifDeduction(grossSalary) - nssfDeductionTier1(grossSalary);
+    const netSalary = grossSalary - payeDeduction(grossSalary) - nhifDeduction(grossSalary) - nssfDeductionTier1(grossSalary) - housingLevyDeduction(grossSalary) + personalRelief;
     console.log(`
     Gross Salary: ${grossSalary}\n
     PAYE: ${payeDeduction(grossSalary)}\n
     NHIF: ${nhifDeduction(grossSalary)}\n
     NSSF(Tier 1): ${nssfDeductionTier1(grossSalary)}\n
+    Housing Levy: ${housingLevyDeduction(grossSalary)}\n
+    Personal relief: ${personalRelief}
     ------------------------------------\n
     Net Salary: ${netSalary}\n
     `)
 }
 
 module.exports={calculateNetSalary}
+
+console.log(payeDeduction(48920))
