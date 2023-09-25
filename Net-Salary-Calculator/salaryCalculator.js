@@ -2,20 +2,8 @@
 
 
 // Functions to calculate the tax deductions based on the net salary
+
 // PAYE Function
-// function payeDeduction(grossSalary) {
-//     if (grossSalary <= 24000) {
-//         return Math.floor(grossSalary * 0.1)
-//     } else if (grossSalary >= 24001 && grossSalary <= 32333) {
-//         return Math.floor(grossSalary * 0.25)
-//     } else if (grossSalary >= 32334 && grossSalary <= 500000) {
-//         return Math.floor(grossSalary * 0.3)
-//     } else if (grossSalary >= 500001 && grossSalary <= 800000) {
-//         return Math.floor(grossSalary * 0.325)
-//     } else {
-//         return Math.floor(grossSalary * 0.35)
-//     }
-// }
 
 function payeDeduction(grossSalary) {
     if (grossSalary <= 24000){
@@ -27,7 +15,7 @@ function payeDeduction(grossSalary) {
     } else if((grossSalary-500000)<=300000){
         return ((grossSalary-500000)*0.325) + (467667*0.3) +(8333*0.25) + 2400
     } else{
-        return (grossSalary*0.35)
+        return ((grossSalary-800000)*0.35) + (300000*0.325) + (467667*0.3) +(8333*0.25) + 2400
     }
 }
 
@@ -119,4 +107,3 @@ function calculateNetSalary(grossSalary) {
 
 module.exports={calculateNetSalary}
 
-console.log(Math.floor(calculateNetSalary(198920)))
