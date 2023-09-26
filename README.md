@@ -53,4 +53,4 @@ node index.js
 ```sh
 node index.js
 ```
-![Net Salary Calculator image](<Screenshots/Screenshot 2023-09-24 224252.png>)
+![Net Salary Calculator image](<Screenshots/Screenshot 2023-09-26 101624.png>)
