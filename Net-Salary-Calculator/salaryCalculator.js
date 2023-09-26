@@ -87,7 +87,6 @@ function calculateNetSalary(grossSalary) {
     // Contribution benefit which is deducted from the taxable pay has been ignored in this program
     const personalRelief = 2400
     const payeDeducted = Math.floor(payeDeduction(grossSalary)) - personalRelief
-    console.log(payeDeducted)
     const nhifDeducted = nhifDeduction(grossSalary)
     const nssfDeducted = nssfDeductionTier1()
     const housingLevy = Math.floor(housingLevyDeduction(grossSalary))
