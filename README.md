@@ -1,6 +1,23 @@
 # Toy Problems Code Challenge
 
 - The repository above contains some code challenges which are described below.
+- To clone the repository use the command 
+```sh
+git clone https://github.com/DennohDev/Toy-Problems-Code-Challenge.git
+```
+- or 
+```sh
+git clone git@github.com:DennohDev/Toy-Problems-Code-Challenge.git
+```
+
+### Technologies used
+- Javascript
+
+### License
+- Check [License.md](./LICENSE.md)
+
+### Author
+- [DennohDev](https://github.com/DennohDev)
 - To run the code after installing make sure you have node installed using the command
 ```sh
 node -v

@@ -15,7 +15,7 @@ function payeDeduction(grossSalary) {
     } else if((grossSalary-500000)<=300000){
         return ((grossSalary-500000)*0.325) + (467667*0.3) +(8333*0.25) + 2400
     } else{
-        return ((grossSalary-800000)*0.35) + (300000*0.325) + (467667*0.3) +(8333*0.25) + 2400
+        return (grossSalary*0.35)
     }
 }
 
